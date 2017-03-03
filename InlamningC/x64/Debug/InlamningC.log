@@ -1,0 +1,10 @@
+﻿  Test.cpp
+d:\git repos\cplusplusass3\inlamningc\queue.h(9): error C2955: 'IQueue': use of class template requires template argument list
+  d:\git repos\cplusplusass3\inlamningc\iqueue.h(5): note: see declaration of 'IQueue'
+  d:\git repos\cplusplusass3\inlamningc\queue.h(26): note: see reference to class template instantiation 'Queue<T>' being compiled
+d:\git repos\cplusplusass3\inlamningc\queue.h(70): error C2244: 'Queue<T>::operator =': unable to match function definition to an existing declaration
+  d:\git repos\cplusplusass3\inlamningc\queue.h(70): note: see declaration of 'Queue<T>::operator ='
+  d:\git repos\cplusplusass3\inlamningc\queue.h(70): note: definition
+  d:\git repos\cplusplusass3\inlamningc\queue.h(70): note: 'Queue &Queue<T>::operator =(Queue<T> &)'
+  d:\git repos\cplusplusass3\inlamningc\queue.h(70): note: existing declarations
+  d:\git repos\cplusplusass3\inlamningc\queue.h(70): note: 'Queue<T> &Queue<T>::operator =(Queue<T> &)'
