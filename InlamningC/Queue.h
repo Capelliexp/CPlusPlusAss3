@@ -28,23 +28,25 @@ public:
 
 template <typename T>
 void Queue<T>::Enqueue(const T& element) {
+	T *elementValue = element;
+
 	if (numberOfElements == arraySize) {
 		ExtendArray();
-		itemArray[pos - 1] = element;
+		itemArray[pos - 1] = elementValue;
 	}
 	else {
 		int arrayPos = pos + numberOfElements;
 		if (arrayPos > (arraySize - 1)) {
 			arrayPos -= arraySize;
 		}
-		itemArray[arrayPos] = element;
+		itemArray[arrayPos] = elementValue;
 	}
 	numberOfElements++;
 }
 
 template <typename T>
 T Queue<T>::Dequeue() throw(...) {
-	T returnItem = itemArray[pos];
+	T returnItem = *itemArray[pos];
 
 	delete[] itemArray[pos];
 	numberOfElements--;

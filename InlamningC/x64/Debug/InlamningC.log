@@ -1,3 +1,30 @@
-﻿  Test.cpp
-  InlamningC.vcxproj -> D:\Git Repos\CPlusPlusAss3\x64\Debug\InlamningC.exe
-  InlamningC.vcxproj -> D:\Git Repos\CPlusPlusAss3\x64\Debug\InlamningC.pdb (Full PDB)
+﻿Build started 2017-03-03 18:50:46.
+     1>Project "C:\Users\Capelli\Git Repos\CPlusPlusAss3\InlamningC\InlamningC.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /ZI /nologo /W3 /WX- /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /errorReport:prompt Test.cpp
+         Test.cpp
+     1>c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(31): error C2440: 'initializing': cannot convert from 'const int' to 'int *'
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(31): note: Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or function-style cast
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(30): note: while compiling class template member function 'void Queue<int>::Enqueue(const T &)'
+                 with
+                 [
+                     T=int
+                 ]
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\test.cpp(12): note: see reference to function template instantiation 'void Queue<int>::Enqueue(const T &)' being compiled
+                 with
+                 [
+                     T=int
+                 ]
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\test.cpp(10): note: see reference to class template instantiation 'Queue<int>' being compiled
+     1>c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(63): error C2440: 'initializing': cannot convert from 'int *' to 'int'
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(63): note: There is no context in which this conversion is possible
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(62): note: while compiling class template member function 'int Queue<int>::Front(void) throw(...) const'
+     1>c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(108): error C2143: syntax error: missing ';' before ':'
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(106): note: while compiling class template member function 'Queue<int>::Queue(void)'
+         c:\users\capelli\git repos\cplusplusass3\inlamningc\test.cpp(10): note: see reference to function template instantiation 'Queue<int>::Queue(void)' being compiled
+     1>c:\users\capelli\git repos\cplusplusass3\inlamningc\queue.h(108): error C2059: syntax error: ':'
+     1>Done Building Project "C:\Users\Capelli\Git Repos\CPlusPlusAss3\InlamningC\InlamningC.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.70
