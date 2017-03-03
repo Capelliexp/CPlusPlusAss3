@@ -6,7 +6,7 @@
 #include <string>
 
 template <typename T>
-class Queue : public IQueue {
+class Queue : IQueue<T> {
 private:
 	T **itemArray;
 	int pos;
@@ -20,7 +20,7 @@ public:
 	void ExtendArray();
 
 	Queue(Queue &otherQueueObject);
-	Queue& operator=(Queue &otherQueueObject);
+	//Queue& operator=(Queue &otherQueueObject);
 
 	Queue();
 	~Queue();
@@ -39,6 +39,7 @@ void Queue<T>::Enqueue(const T& element) {
 		}
 		itemArray[arrayPos] = element;
 	}
+	numberOfElements++;
 }
 
 template <typename T>
@@ -56,7 +57,11 @@ T Queue<T>::Dequeue() throw(...) {
 }
 
 template <typename T>
-T Queue<T>::Front() const throw(...) {}
+T Queue<T>::Front() const throw(...) {
+	T returnItem = itemArray[pos];
+
+	return returnItem;
+}
 
 template <typename T>
 bool Queue<T>::IsEmpty() const {
@@ -69,18 +74,31 @@ bool Queue<T>::IsEmpty() const {
 template <typename T>
 void Queue<T>::ExtendArray() {
 	T** temp = new T*[arraySize];
-	
+
 	for (int i = 0; i < arraySize; i++) {
 		temp[i] = itemArray[i];
 	}
 
+	delete[] itemArray;
+	this->itemArray = new T*[arraySize + 1];
+
+	for (int i = 0; i < pos; i++) {
+		itemArray[i] = temp[i];
+	}
+	for (int i = (pos + 1); i < (arraySize + 1); i++) {
+		itemArray[i] = temp[i - 1];
+	}
+
+	delete[] temp;
+	pos++;
+	arraySize++;
 }
 
 template <typename T>
 Queue<T>::Queue(Queue &otherQueueObject) {}
 
-template <typename T>
-Queue& Queue<T>::operator=(Queue &otherQueueObject) {}
+//template <typename T>
+//Queue& Queue<T>::operator=(Queue &otherQueueObject) {}
 
 template <typename T>
 Queue<T>::Queue() {
@@ -91,6 +109,11 @@ Queue<T>::Queue() {
 }
 
 template <typename T>
-Queue<T>::~Queue() {}
+Queue<T>::~Queue() {
+	for (int i = 0; i < arraySize; i++) {
+		delete this->itemArray[i];
+	}
+	delete[] this->itemArray;
+}
 
 #endif
