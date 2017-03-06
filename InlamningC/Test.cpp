@@ -4,11 +4,23 @@
 int main() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	Queue <int> Q(0);
+	Queue <int> Q(1);
 
 	Q.Enqueue(1);
 	Q.Enqueue(2);
 	Q.Enqueue(3);
+	Q.Enqueue(4);
+	Q.Enqueue(5);
+	Q.Enqueue(6);
+
+	Q.PrintQueue();
+
+	Q.Dequeue();
+	Q.Dequeue();
+	Q.Dequeue();
+
+	std::cout << std::endl;
+	Q.PrintQueue();
 
 	getchar();
 	return 1;

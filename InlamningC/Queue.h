@@ -125,22 +125,31 @@ bool Queue<T>::IsEmpty() const {
 
 template <typename T>
 void Queue<T>::ExtendArray() {
-	T* temp = new T[arraySize];
+	T* temp = new T[arraySize + 1];
 
-	for (int i = 0; i < arraySize; i++) {
-		temp[i] = this->itemArray[i];
-	}
-
-	this->itemArray = new T[arraySize + 1];
+	/*for (int i = 0; i < arraySize; i++) {
+	temp[i] = this->itemArray[i];
+	}*/
 
 	for (int i = 0; i < pos; i++) {
+		temp[i] = this->itemArray[i];
+	}
+	for (int i = (pos + 1); i < (arraySize + 1); i++) {
+		temp[i] = this->itemArray[i - 1];
+	}
+
+	delete[] itemArray;
+	this->itemArray = temp;
+	//this->itemArray = new T[arraySize + 1];
+
+	/*for (int i = 0; i < pos; i++) {
 		this->itemArray[i] = temp[i];
 	}
 	for (int i = (pos + 1); i < (arraySize + 1); i++) {
 		this->itemArray[i] = temp[i - 1];
-	}
+	}*/
 
-	delete[] temp;
+	//delete temp;
 	pos++;
 	arraySize++;
 }
@@ -189,9 +198,11 @@ Queue<T>& Queue<T>::operator=(Queue &otherQueueObject) {
 
 template <typename T>
 Queue<T>::Queue(int start) {
+	if (start < 1) start = 1;
+
 	this->itemArray = new T[start];
 	this->pos = 0;
-	this->arraySize = start;
+	this->arraySize = start/* + 1*/;
 	this->numberOfElements = 0;
 }
 
