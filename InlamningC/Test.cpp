@@ -57,8 +57,8 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<remove 2 items>" << std::endl;
-	Q1.Dequeue();	//remove 1
-	Q1.Dequeue();	//remove 2
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 1
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 2
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q1.PrintQueue();
@@ -92,13 +92,13 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<remove 7 items> (5 items + 2 empty)" << std::endl;
-	Q1.Dequeue();	//remove 3
-	Q1.Dequeue();	//remove 4
-	Q1.Dequeue();	//remove 5
-	Q1.Dequeue();	//remove 11
-	Q1.Dequeue();	//remove 12
-	Q1.Dequeue();	//--
-	Q1.Dequeue();	//--
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 3
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 4
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 5
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 11
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 12
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//--
+	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//--
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q1.PrintQueue();
@@ -129,8 +129,8 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<remove 2 items>" << std::endl;
-	Q3.Dequeue();	//remove a
-	Q3.Dequeue();	//remove b
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove a
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove b
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q3.PrintQueue();
@@ -164,13 +164,13 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<remove 7 items> (5 items + 2 empty)" << std::endl;
-	Q3.Dequeue();	//remove c
-	Q3.Dequeue();	//remove d
-	Q3.Dequeue();	//remove e
-	Q3.Dequeue();	//remove x
-	Q3.Dequeue();	//remove y
-	Q3.Dequeue();	//--
-	Q3.Dequeue();	//--
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove c
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove d
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove e
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove x
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove y
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//--
+	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//--
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q3.PrintQueue();
