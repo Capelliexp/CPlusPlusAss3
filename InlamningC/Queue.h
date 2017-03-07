@@ -26,8 +26,8 @@ public:
 	void ExtendArray();
 	void PrintQueue() const;
 
-	Queue(Queue &otherQueueObject);
-	Queue& operator=(Queue &otherQueueObject);
+	Queue(const Queue &otherQueueObject);
+	Queue& operator=(const Queue &otherQueueObject);
 
 	Queue(int start);
 	~Queue();
@@ -127,10 +127,6 @@ template <typename T>
 void Queue<T>::ExtendArray() {
 	T* temp = new T[arraySize + 1];
 
-	/*for (int i = 0; i < arraySize; i++) {
-	temp[i] = this->itemArray[i];
-	}*/
-
 	for (int i = 0; i < pos; i++) {
 		temp[i] = this->itemArray[i];
 	}
@@ -140,16 +136,7 @@ void Queue<T>::ExtendArray() {
 
 	delete[] itemArray;
 	this->itemArray = temp;
-	//this->itemArray = new T[arraySize + 1];
 
-	/*for (int i = 0; i < pos; i++) {
-		this->itemArray[i] = temp[i];
-	}
-	for (int i = (pos + 1); i < (arraySize + 1); i++) {
-		this->itemArray[i] = temp[i - 1];
-	}*/
-
-	//delete temp;
 	pos++;
 	arraySize++;
 }
@@ -159,7 +146,6 @@ void Queue<T>::PrintQueue() const {
 	int i = pos;
 	int loopCount = 0;
 
-	//std::cout << std::endl;
 	while (loopCount < numberOfElements) {
 		std::cout << "Element " << (loopCount + 1) << ": " << itemArray[i] << std::endl;
 		i++;
@@ -172,7 +158,7 @@ void Queue<T>::PrintQueue() const {
 }
 
 template <typename T>
-Queue<T>::Queue(Queue &otherQueueObject) {
+Queue<T>::Queue(const Queue &otherQueueObject) {
 	this->itemArray = new T[otherQueueObject.GetArraySize()];
 	this->pos = otherQueueObject.GetPos();
 	this->arraySize = otherQueueObject.GetArraySize();
@@ -184,7 +170,9 @@ Queue<T>::Queue(Queue &otherQueueObject) {
 }
 
 template <typename T>
-Queue<T>& Queue<T>::operator=(Queue &otherQueueObject) {
+Queue<T>& Queue<T>::operator=(const Queue &otherQueueObject) {
+	delete[] this->itemArray;
+
 	this->itemArray = new T[otherQueueObject.GetArraySize()];
 	this->pos = otherQueueObject.GetPos();
 	this->arraySize = otherQueueObject.GetArraySize();
@@ -197,20 +185,18 @@ Queue<T>& Queue<T>::operator=(Queue &otherQueueObject) {
 }
 
 template <typename T>
-Queue<T>::Queue(int start) {
-	if (start < 1) start = 1;
+Queue<T>::Queue(const int start) {
+	int startValue = start;
+	if (startValue < 1) startValue = 1;
 
-	this->itemArray = new T[start];
+	this->itemArray = new T[startValue];
 	this->pos = 0;
-	this->arraySize = start/* + 1*/;
+	this->arraySize = startValue;
 	this->numberOfElements = 0;
 }
 
 template <typename T>
 Queue<T>::~Queue() {
-	//for (int i = 0; i < arraySize; i++) {
-	//	delete itemArray[i];
-	//}
 	delete[] this->itemArray;
 }
 

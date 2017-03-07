@@ -1,7 +1,7 @@
 #include "Queue.h"
 #include <exception>
 
-int main() {
+/*int main() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	Queue <int> Q(1);
@@ -22,11 +22,20 @@ int main() {
 	std::cout << std::endl;
 	Q.PrintQueue();
 
+	std::cout << std::endl;
+	std::cout << Q.Front() << std::endl;
+	std::cout << Q.IsEmpty() << std::endl;
+
+	std::cout << std::endl;
+	Q.PrintQueue();
+
 	getchar();
 	return 1;
-}
+}*/
 
-/*int main() {	//the test
+
+// /*
+int main() {	//the test
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 	std::cout << "Press enter to start test 1 (with int)" << std::endl;
@@ -55,7 +64,7 @@ int main() {
 	Q1.PrintQueue();
 
 	std::cout << std::endl << "<copy queue to new queue-item (Q2)>" << std::endl;
-	Queue <int> Q2(Q1);
+	Queue <int> Q2(Q1);	//test copy constructor
 
 	std::cout << std::endl << "All items of Q2:" << std::endl;
 	Q2.PrintQueue();
@@ -70,7 +79,7 @@ int main() {
 	Q1.PrintQueue();
 
 	std::cout << std::endl << "<copy Q1 to Q2>" << std::endl;
-	Q2 = Q1;
+	Q2 = Q1;	//test overload operator
 
 	std::cout << std::endl << "All items of Q2:" << std::endl;
 	Q2.PrintQueue();
@@ -127,7 +136,7 @@ int main() {
 	Q3.PrintQueue();
 
 	std::cout << std::endl << "<copy queue to new queue-item (Q4)>" << std::endl;
-	Queue <char> Q4(Q3);
+	Queue <char> Q4(Q3);	//test copy constructor
 
 	std::cout << std::endl << "All items of Q4:" << std::endl;
 	Q4.PrintQueue();
@@ -142,7 +151,7 @@ int main() {
 	Q3.PrintQueue();
 
 	std::cout << std::endl << "<copy Q3 to Q4>" << std::endl;
-	Q4 = Q3;
+	Q4 = Q3;	//test overload operator
 
 	std::cout << std::endl << "All items of Q4:" << std::endl;
 	Q4.PrintQueue();
@@ -171,4 +180,5 @@ int main() {
 	std::cout << std::endl << "Press enter to exit" << std::endl;
 	getchar();
 	return 1;
-}*/
+}
+// */
