@@ -108,6 +108,11 @@ int main() {	//the test
 
 	//---------------------------------------------------
 
+	//Q1.~Queue();	//triggar break
+	//Q2.~Queue();
+
+	//---------------------------------------------------
+
 	std::cout << std::endl << "Press enter to start test 2 (with char)";
 	getchar();
 
@@ -176,6 +181,13 @@ int main() {	//the test
 	Q3.PrintQueue();
 
 	std::cout << std::endl << "is list empty? (0 = no, 1 = yes) " << Q3.IsEmpty() << std::endl;	//returns 1 (bcs list is empty)
+
+	//---------------------------------------------------
+
+	//Q3.~Queue();	//triggar break
+	//Q4.~Queue();
+
+	//---------------------------------------------------
 
 	std::cout << std::endl << "Press enter to exit" << std::endl;
 	getchar();
