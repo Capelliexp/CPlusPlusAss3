@@ -6,25 +6,25 @@
 
 	Queue <int> Q(1);
 
-	Q.Enqueue(1);
-	Q.Enqueue(2);
-	Q.Enqueue(3);
-	Q.Enqueue(4);
-	Q.Enqueue(5);
-	Q.Enqueue(6);
+	Q.enqueue(1);
+	Q.enqueue(2);
+	Q.enqueue(3);
+	Q.enqueue(4);
+	Q.enqueue(5);
+	Q.enqueue(6);
 
 	Q.PrintQueue();
 
-	Q.Dequeue();
-	Q.Dequeue();
-	Q.Dequeue();
+	Q.dequeue();
+	Q.dequeue();
+	Q.dequeue();
 
 	std::cout << std::endl;
 	Q.PrintQueue();
 
 	std::cout << std::endl;
-	std::cout << Q.Front() << std::endl;
-	std::cout << Q.IsEmpty() << std::endl;
+	std::cout << Q.front() << std::endl;
+	std::cout << Q.isEmpty() << std::endl;
 
 	std::cout << std::endl;
 	Q.PrintQueue();
@@ -45,20 +45,27 @@ int main() {	//the test
 	Queue <int> Q1(3);
 
 	std::cout << std::endl << "<add 5 items>" << std::endl;
-	Q1.Enqueue(1);	//add 1
-	Q1.Enqueue(2);	//add 2
-	Q1.Enqueue(3);	//add 3
-	Q1.Enqueue(4);	//add 4
-	Q1.Enqueue(5);	//add 5
+	Q1.enqueue(1);	//add 1
+	Q1.enqueue(2);	//add 2
+	Q1.enqueue(3);	//add 3
+	Q1.enqueue(4);	//add 4
+	Q1.enqueue(5);	//add 5
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q1.PrintQueue();
 
 	//----
-
 	std::cout << std::endl << "<remove 2 items>" << std::endl;
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 1
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 2
+	try {
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 1
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 2
+	}
+	catch (int e) {
+		std::cout << "Error: Dequeue of empty queue at pos " << e << std::endl;
+		std::cout << "Halting remaining Dequeue commands" << std::endl;
+	}
+	
+	
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q1.PrintQueue();
@@ -72,8 +79,8 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<add 2 items>" << std::endl;
-	Q1.Enqueue(11);	//add 11
-	Q1.Enqueue(12);	//add 12
+	Q1.enqueue(11);	//add 11
+	Q1.enqueue(12);	//add 12
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q1.PrintQueue();
@@ -85,25 +92,36 @@ int main() {	//the test
 	Q2.PrintQueue();
 
 	//----
+	try {
+		std::cout << std::endl << "the front-most item is: " << Q1.front() << std::endl;	//print front-most element (3)
+	}
+	catch (int e) {
+		std::cout << "Error: Front of empty queue at pos " << e << std::endl;
+	}
 
-	std::cout << std::endl << "the front-most item is: " << Q1.Front() << std::endl;	//print front-most element (3)
-	std::cout << "is list empty? (0 = no, 1 = yes) " << Q1.IsEmpty() << std::endl;	//returns 0 (bcs list is not empty)
+	std::cout << "is list empty? (0 = no, 1 = yes) " << Q1.isEmpty() << std::endl;	//returns 0 (bcs list is not empty)
 
 	//----
 
 	std::cout << std::endl << "<remove 7 items> (5 items + 2 empty)" << std::endl;
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 3
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 4
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 5
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 11
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//remove 12
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//--
-	std::cout << "Remove item: " << Q1.Dequeue() << std::endl;	//--
+	try {
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 3
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 4
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 5
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 11
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//remove 12
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//--
+		std::cout << "Remove item: " << Q1.dequeue() << std::endl;	//--
+	}
+	catch (int e) {
+		std::cout << "Error: Dequeue of empty queue at pos " << e << std::endl;
+		std::cout << "Halting remaining Dequeue commands" << std::endl; 
+	}
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q1.PrintQueue();
 
-	std::cout << std::endl << "is list empty? (0 = no, 1 = yes) " << Q1.IsEmpty() << std::endl;	//returns 1 (bcs list is empty)
+	std::cout << std::endl << "is list empty? (0 = no, 1 = yes) " << Q1.isEmpty() << std::endl;	//returns 1 (bcs list is empty)
 
 
 	//---------------------------------------------------
@@ -122,11 +140,11 @@ int main() {	//the test
 	Queue <char> Q3(3);
 
 	std::cout << std::endl << "<add 5 items>" << std::endl;
-	Q3.Enqueue('a');	//add a
-	Q3.Enqueue('b');	//add b
-	Q3.Enqueue('c');	//add c
-	Q3.Enqueue('d');	//add d
-	Q3.Enqueue('e');	//add e
+	Q3.enqueue('a');	//add a
+	Q3.enqueue('b');	//add b
+	Q3.enqueue('c');	//add c
+	Q3.enqueue('d');	//add d
+	Q3.enqueue('e');	//add e
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q3.PrintQueue();
@@ -134,8 +152,14 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<remove 2 items>" << std::endl;
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove a
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove b
+	try {
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove a
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove b
+	}
+	catch (int e) {
+		std::cout << "Error: Dequeue of empty queue at pos " << e << std::endl;
+		std::cout << "Halting remaining Dequeue commands" << std::endl;
+	}
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q3.PrintQueue();
@@ -149,8 +173,8 @@ int main() {	//the test
 	//----
 
 	std::cout << std::endl << "<add 2 items>" << std::endl;
-	Q3.Enqueue('x');	//add x
-	Q3.Enqueue('y');	//add y
+	Q3.enqueue('x');	//add x
+	Q3.enqueue('y');	//add y
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q3.PrintQueue();
@@ -162,25 +186,36 @@ int main() {	//the test
 	Q4.PrintQueue();
 
 	//----
+	try {
+		std::cout << std::endl << "the front-most item is: " << Q3.front() << std::endl;	//print front-most element (c)
+	}
+	catch (int e) {
+		std::cout << "Error: Front of empty queue at pos " << e << std::endl;
+	}
 
-	std::cout << std::endl << "the front-most item is: " << Q3.Front() << std::endl;	//print front-most element (c)
-	std::cout << "is list empty? (0 = no, 1 = yes) " << Q3.IsEmpty() << std::endl;	//returns 0 (bcs list is not empty)
+	std::cout << "is list empty? (0 = no, 1 = yes) " << Q3.isEmpty() << std::endl;	//returns 0 (bcs list is not empty)
 
 	//----
 
 	std::cout << std::endl << "<remove 7 items> (5 items + 2 empty)" << std::endl;
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove c
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove d
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove e
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove x
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//remove y
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//--
-	std::cout << "Remove item: " << Q3.Dequeue() << std::endl;	//--
+	try {
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove c
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove d
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove e
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove x
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//remove y
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//--
+		std::cout << "Remove item: " << Q3.dequeue() << std::endl;	//--
+	}
+	catch (int e) {
+		std::cout << "Error: Dequeue of empty queue at pos " << e << std::endl;
+		std::cout << "Halting remaining Dequeue commands" << std::endl;
+	}
 
 	std::cout << std::endl << "All items:" << std::endl;
 	Q3.PrintQueue();
 
-	std::cout << std::endl << "is list empty? (0 = no, 1 = yes) " << Q3.IsEmpty() << std::endl;	//returns 1 (bcs list is empty)
+	std::cout << std::endl << "is list empty? (0 = no, 1 = yes) " << Q3.isEmpty() << std::endl;	//returns 1 (bcs list is empty)
 
 	//---------------------------------------------------
 

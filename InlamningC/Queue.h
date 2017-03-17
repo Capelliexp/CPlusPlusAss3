@@ -18,10 +18,10 @@ public:
 	int GetArraySize() const;
 	int GetNumberOfElements() const;
 
-	void Enqueue(const T& element);
-	T Dequeue() throw(...);
-	T Front() const throw(...);
-	bool IsEmpty() const;
+	void enqueue(const T& element);
+	T dequeue() throw(...);
+	T front() const throw(...);
+	bool isEmpty() const;
 
 	void ExtendArray();
 	void PrintQueue() const;
@@ -29,7 +29,7 @@ public:
 	Queue(const Queue &otherQueueObject);
 	Queue& operator=(const Queue &otherQueueObject);
 
-	Queue(int start);
+	Queue(const int start = 1);
 	~Queue();
 };
 
@@ -54,7 +54,7 @@ int Queue<T>::GetNumberOfElements() const {
 }
 
 template <typename T>
-void Queue<T>::Enqueue(const T& element) {
+void Queue<T>::enqueue(const T& element) {
 	if (numberOfElements == arraySize) {
 		ExtendArray();
 		int arrayPos1 = pos - 1;
@@ -74,49 +74,37 @@ void Queue<T>::Enqueue(const T& element) {
 }
 
 template <typename T>
-T Queue<T>::Dequeue() throw(...) {
-	try {
-		if (numberOfElements > 0) {
-			T returnItem = itemArray[pos];
-
-			itemArray[pos] = NULL;
-			numberOfElements--;
-			pos++;
-			if (pos > (arraySize - 1)) {
-				pos = 0;
-			}
-			return returnItem;
-		}
-		else {
+T Queue<T>::dequeue() throw(...) {
+	if (numberOfElements > 0) {
+		T returnItem = itemArray[pos];
+		itemArray[pos] = NULL;
+		numberOfElements--;
+		pos++;
+		if (pos > (arraySize - 1)) {
 			pos = 0;
-			throw pos;
 		}
+		return returnItem;
 	}
-	catch (int e) {
-		std::cout << "Error: Dequeue of empty queue at pos " << e << std::endl;
-		return NULL;
+	else {
+		int oldPos = pos;
+		pos = 0;
+		throw oldPos;
 	}
 }
 
 template <typename T>
-T Queue<T>::Front() const throw(...) {
-	try {
-		if (numberOfElements != 0) {
-			T returnItem = itemArray[pos];
-			return returnItem;
-		}
-		else {
-			throw pos;
-		}
+T Queue<T>::front() const throw(...) {
+	if (numberOfElements != 0) {
+		T returnItem = itemArray[pos];
+		return returnItem;
 	}
-	catch (int e) {
-		std::cout << "Error: Front of empty queue at pos " << e << std::endl;
-		return NULL;
+	else {
+		throw pos;
 	}	
 }
 
 template <typename T>
-bool Queue<T>::IsEmpty() const {
+bool Queue<T>::isEmpty() const {
 	if (numberOfElements == 0) {
 		return true;
 	}
@@ -171,21 +159,23 @@ Queue<T>::Queue(const Queue &otherQueueObject) {
 
 template <typename T>
 Queue<T>& Queue<T>::operator=(const Queue &otherQueueObject) {
-	delete[] this->itemArray;
+	if (&otherQueueObject != this) {
+		delete[] this->itemArray;
 
-	this->itemArray = new T[otherQueueObject.GetArraySize()];
-	this->pos = otherQueueObject.GetPos();
-	this->arraySize = otherQueueObject.GetArraySize();
-	this->numberOfElements = otherQueueObject.GetNumberOfElements();
+		this->itemArray = new T[otherQueueObject.GetArraySize()];
+		this->pos = otherQueueObject.GetPos();
+		this->arraySize = otherQueueObject.GetArraySize();
+		this->numberOfElements = otherQueueObject.GetNumberOfElements();
 
-	for (int i = 0; i < arraySize; i++) {
-		this->itemArray[i] = otherQueueObject.GetItemArray(i);
+		for (int i = 0; i < arraySize; i++) {
+			this->itemArray[i] = otherQueueObject.GetItemArray(i);
+		}
 	}
 	return *this;
 }
 
 template <typename T>
-Queue<T>::Queue(const int start) {
+Queue<T>::Queue(const int start = 1) {
 	int startValue = start;
 	if (startValue < 1) startValue = 1;
 
